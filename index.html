@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="example/js/vendor/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="example/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="example/js/jquery.fileupload.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<input id="fileupload" type="file" name="files[]" multiple>
+
+<script type="text/javascript">
+    $(function () {
+        'use strict';
+        var url = 'receive_file.php';
+        $('#fileupload').fileupload({
+            url: url,
+            dataType: 'json',
+            // 上传完成回调
+            done: function (e, data) {
+                var title = data.result.title;
+                var contents = data.result.contents;
+//                console.log(title);
+//                console.log(contents);
+            },
+            // 上传中
+//            progressall: function (e, data) {
+//               console.log(e);
+//               console.log(data);
+//            }
+        })
+    });
+</script>
+</body>
+</html>
